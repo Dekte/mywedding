@@ -13,6 +13,7 @@ export default function App() {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
   const [scrollY, setScrollY] = useState(0);
   const [showEnableMusicPrompt, setShowEnableMusicPrompt] = useState(false);
+  const [showCantCome, setShowCantCome] = useState(false);
 
   // Parse URL for guest name
   useEffect(() => {
@@ -338,7 +339,7 @@ export default function App() {
                 <p className="font-console text-lg text-center mb-6">Your presence is the greatest present. If you'd like to contribute to our honeymoon fund, you can transfer to one of the accounts below.</p>
 
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-                  {CONFIG.gift.banks.map((bank, index) => (
+                    {CONFIG.gift.banks.map((bank, index) => (
                     <div key={index} className="flex flex-col h-full bg-gray-50 border border-black/10 rounded-lg p-4 shadow-sm">
                       <div className="mb-2 text-sm text-gray-600 font-console">{bank.bankName}</div>
                       <div className="font-pixel text-2xl tracking-widest text-center my-2">{bank.accountNumber}</div>
@@ -369,11 +370,32 @@ export default function App() {
                   ))}
                 </div>
 
+                {/* Toggle: Kamu tidak bisa datang? */}
+                <div className="mt-6 flex items-center justify-center">
+                  <PixelButton onClick={() => setShowCantCome(v => !v)} className="mx-auto">Kamu tidak bisa datang?</PixelButton>
+                </div>
+
+                {showCantCome && (
+                  <div className="mt-4">
+                    <RetroWindow title="RSVP // TIDAK HADIR">
+                      <div className="p-4 text-left">
+                        <p className="font-console text-lg">Kamu tidak bisa datang?</p>
+                        <p className="text-sm text-gray-600 mt-2">Jika kamu tidak dapat hadir, beri tahu kami alasan singkat (opsional) dan kami akan mencatat kehadiranmu.</p>
+                        <div className="mt-4 flex items-center gap-3">
+                          <button onClick={() => { alert('Terima kasih. Kami mencatat bahwa kamu tidak bisa datang.'); setShowCantCome(false); }} className="bg-red-600 text-white px-4 py-2 rounded font-pixel">Tidak Bisa Datang</button>
+                          <button onClick={() => setShowCantCome(false)} className="bg-gray-300 text-black px-4 py-2 rounded font-pixel">Tutup</button>
+                        </div>
+                      </div>
+                    </RetroWindow>
+                  </div>
+                )}
+
                 <div className="mt-6 text-center text-sm text-gray-500">ありがとうございました</div>
               </div>
             </div>
           </section>
             {/* --- FOOTER --- */}
+          
             <footer className="relative z-10 bg-black text-white py-12 text-center border-t border-gray-800">
               <GlitchText text="ITS JUST BEGINNING..." className="text-4xl font-pixel text-red-600 mb-4 block" />
               <p className="font-console text-gray-500 mb-4">CONTINUE? [Y/N]</p>
