@@ -1,0 +1,11 @@
+/* Minimal index.css to satisfy the link from index.html
+   Tailwind utilities are provided via the CDN in index.html, so this
+   file can be used for small custom overrides if needed. */
+
+html, body, #root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+}
