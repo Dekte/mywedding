@@ -1,0 +1,53 @@
+# Quick Upload to GitHub - TL;DR
+
+## Step 1-2: Install Git + Setup (one-time)
+```powershell
+# Download: https://git-scm.com/download/win
+# After install, restart PowerShell and run:
+git config --global user.name "Nama Kamu"
+git config --global user.email "email@kamu.com"
+```
+
+## Step 3-4: Initialize & Commit
+```powershell
+cd 'f:\WEBSITE\pixelheart_-y2k-wedding-invite'
+git init
+git add .
+git commit -m "Initial commit: Y2K wedding invitation"
+```
+
+## Step 5-6: Create GitHub Repo & Connect
+1. Go to: https://github.com/new
+2. Name: `pixelheart-y2k-wedding-invite`
+3. Click "Create repository"
+4. GitHub will show commands — copy-paste this:
+
+```powershell
+git branch -M main
+git remote add origin https://github.com/YOUR_USERNAME/pixelheart-y2k-wedding-invite.git
+git push -u origin main
+```
+
+Replace `YOUR_USERNAME` with your GitHub username!
+
+## Step 7: Authenticate
+When prompted for password, use **Personal Access Token**:
+1. Go to: https://github.com/settings/tokens
+2. Click "Generate new token (classic)"
+3. Tick: `repo` + `workflow`
+4. Click "Generate token" and copy
+5. Paste as password when uploading
+
+Done! ✅
+
+---
+
+## Future Updates (after first push)
+```powershell
+cd 'f:\WEBSITE\pixelheart_-y2k-wedding-invite'
+git add .
+git commit -m "Your change description"
+git push
+```
+
+**Read GITHUB_UPLOAD_GUIDE.md for detailed troubleshooting!**
