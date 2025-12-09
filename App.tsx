@@ -304,6 +304,32 @@ export default function App() {
             </div>
           </section>
 
+          {/* --- GALLERY (PARALLAXISH) --- */}
+      <section className="relative z-10 py-20 bg-black overflow-hidden border-t-4 border-black">
+        <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+           <div className="w-full h-full bg-[repeating-linear-gradient(45deg,#111,#111_10px,#222_10px,#222_20px)]"></div>
+        </div>
+
+        <div className="max-w-6xl mx-auto px-4 relative z-10">
+          <RetroWindow title="GALLERY_VIEWER_V1.0">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-2">
+               {CONFIG.gallery.map((src, i) => (
+                 <div key={i} className={`relative border-2 border-gray-600 group overflow-hidden ${i % 3 === 0 ? 'md:col-span-2 md:row-span-2' : ''}`}>
+                   <img 
+                     src={src} 
+                     alt={`Gallery ${i}`} 
+                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110 grayscale group-hover:grayscale-0"
+                   />
+                   <div className="absolute bottom-0 left-0 bg-black/70 text-white text-xs font-console p-1 w-full opacity-0 group-hover:opacity-100 transition-opacity">
+                     IMG_00{i+1}.JPG
+                   </div>
+                 </div>
+               ))}
+            </div>
+          </RetroWindow>
+        </div>
+      </section>
+
           {/* --- GIFT SECTION --- */}
           <section className="relative z-10 py-20 px-4 bg-gray-100 text-black border-t-8 border-pink-500">
             <div className="max-w-4xl mx-auto px-4">

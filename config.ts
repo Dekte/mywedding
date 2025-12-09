@@ -53,7 +53,7 @@ export const CONFIG = {
         time: "13:00 WIB - 15.00 WIB",
       },
       walimah: {
-        title: "Walimah",
+        title: "Walimah Al-'ursy",
         time: "19:00 WIB - Till Drop",
       },
     },
